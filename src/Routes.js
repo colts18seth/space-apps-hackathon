@@ -1,11 +1,17 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import Api from './Api';
 import Home from './Home';
 import About from './About';
 import Sources from './Sources';
 import NewResourceForm from './NewResourceForm';
 
 function Routes() {
+
+    const handleAdd = async (data) => {
+        Api.addResource(JSON.stringify(data));
+    }
+
     return (
         <div>
             <Switch>
@@ -19,7 +25,7 @@ function Routes() {
                     <Sources />
                 </Route>
                 <Route exact path='/newResourceForm'>
-                    <NewResourceForm />
+                    <NewResourceForm handleAdd={handleAdd} />
                 </Route>
                 <Redirect to='/' />
             </Switch>

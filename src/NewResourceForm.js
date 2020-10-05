@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import './NewResourceForm.css';
 
-function NewResourceForm() {
+function NewResourceForm({ handleAdd }) {
     return (
         <div className="NewResourceForm">
             <h1>Add Resource</h1>
@@ -15,7 +15,7 @@ function NewResourceForm() {
                 }}
                 onSubmit={async (values) => {
                     await new Promise((r) => setTimeout(r, 500));
-                    alert(JSON.stringify(values, null, 2));
+                    handleAdd(values);
                 }}
             >
 
